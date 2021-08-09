@@ -1,0 +1,28 @@
+{
+  "name": "socket_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambitraze/socket_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sambitraze/socket_backend/issues"
+  },
+  "homepage": "https://github.com/sambitraze/socket_backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "mailgun-js": "^0.22.0",
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1",
+    "socket.io": "^4.1.3"
+  }
+}
