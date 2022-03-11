@@ -9,7 +9,7 @@ const todoRouter = require("./routes/todo");
 app.use(express.json());
 app.use(cors());
 
-app.use("/todo", todoRouter);
+// app.use("/todo", todoRouter);
 
 
 // io.on('connection', (socket) => {
@@ -31,10 +31,7 @@ const data = {
 
 
 app.get('/', (req, res) => {
-    mailgun.messages().send(data, (error, body) => {
-        console.log(body);
-        res.send(body);
-      });
+    res.send("hello");
 })
 
 http.listen(8080, "0.0.0.0", () => {
