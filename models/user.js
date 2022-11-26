@@ -1,7 +1,6 @@
 var db = require('../db_config');
 
 var User = function (user) {
-    this.id = user.id;
     this.uuid = user.uuid;
     this.chatstatus = user.chatstatus;
 }
