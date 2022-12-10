@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-http.listen(8080, "0127.0.0.1", (server) => {
+http.listen(8080, "127.0.0.1", (server) => {
   console.log(
     "Server listening:",
     `http://${http.address().address}:${http.address().port}`
