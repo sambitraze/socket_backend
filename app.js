@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 app.get("/", (req, res) => {
   res.send("Hello World! <a href='/chat'>Chat</a>");
 });
-pp.get("/chat", (req, res) => {
+app.get("/chat", (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
