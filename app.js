@@ -3,22 +3,22 @@ const app = express();
 const cors = require("cors");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const pool = require("./db_config");
+// const pool = require("./db_config");
 
 app.use(express.json());
 app.use(cors());
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error("Error acquiring client", err.stack);
-  }
-  client.query("SELECT NOW()", (err, result) => {
-    release();
-    if (err) {
-      return console.error("Error executing query", err.stack);
-    }
-    console.log("DB Connection succesfull at: " + result.rows[0].now);
-  });
-});
+// pool.connect((err, client, release) => {
+//   if (err) {
+//     return console.error("Error acquiring client", err.stack);
+//   }
+//   client.query("SELECT NOW()", (err, result) => {
+//     release();
+//     if (err) {
+//       return console.error("Error executing query", err.stack);
+//     }
+//     console.log("DB Connection succesfull at: " + result.rows[0].now);
+//   });
+// });
 
 // socket
 
