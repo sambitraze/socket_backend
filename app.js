@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const UserService = require("./routes/user.js");
 const pool = require("./db_config");
 
 app.use(express.json());
@@ -21,57 +20,20 @@ pool.connect((err, client, release) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// socket
 
-app.use("/user", UserService);
-
-// const {
-//   userJoin,
-//   getCurrentUser,
-//   userLeave,
-//   getRoomUsers
-// } = require('./utils/users');
-
-const botName = "ChatCord Bot";
-
-// Run when client connects
 io.on("connection", (socket) => {
-  console.log("new connection");
-  UserService.AddUser("socket.id", "online");
-  socket.on("joinRoom", ({ username, room }) => {
-    const user = userJoin(socket.id, username, room);
-
-    socket.join(user.room);
-    socket.broadcast
-      .to(user.room)
-      .emit(
-        "message",
-        formatMessage(botName, `${user.username} has joined the chat`)
-      );
-
-    // Send users and room info
-    io.to(user.room).emit("roomUsers", {
-      room: user.room,
-      users: getRoomUsers(user.room),
-    });
-  });
-
-  // Listen for chatMessage
-  socket.on("chatMessage", (msg) => {
-    const user = getCurrentUser(socket.id);
-
-    io.to(user.room).emit("message", formatMessage(user.username, msg));
-  });
-
-  // Runs when client disconnects
+  console.log("a user connected");
   socket.on("disconnect", () => {
-    console.log("disconnected");
+    console.log("user disconnected");
   });
 });
 
-http.listen(8080, "127.0.0.1", (server) => {
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+http.listen(8080, "0.0.0.0", (server) => {
   console.log(
     "Server listening:",
     `http://${http.address().address}:${http.address().port}`
