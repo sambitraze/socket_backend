@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "pre": "prisma generate",
     "start": "nodemon app.js"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/sambitraze/socket_backend#readme",
   "dependencies": {
+    "@prisma/client": "^4.7.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
@@ -24,5 +26,8 @@
     "nodemon": "^2.0.12",
     "pg": "^8.7.1",
     "socket.io": "^4.1.3"
+  },
+  "devDependencies": {
+    "prisma": "^4.7.1"
   }
 }

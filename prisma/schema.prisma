@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model messages {
+  id        String      @id @default(uuid())
+  content   String
+  type     String @default("text")
+  sender    String
+  receiver  String
+  room_type String @default("private")
+  sentAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  receivedAt DateTime
+  readAt DateTime
+  channel   String
+}
