@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/sambitraze/socket_backend#readme",
   "dependencies": {
+    "@directus/sdk": "^10.3.1",
     "@prisma/client": "^4.7.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
